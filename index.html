@@ -12,10 +12,33 @@
 
 <body>
     <div id="app">
-        <h1>Product goes here</h1>
+        <div class="nav-bar"></div>
+        <div class="cart">
+            Cart:
+            <ul>               
+                <li v-for="(count, id) in cart" :key="id">
+                    Product {{ id }}: {{ count }} item(s)
+                </li>
+            </ul>            
+            <p v-if="Object.keys(cart).length === 0">Empty</p>
+        </div>
+            <product-display 
+                :premium="premium" 
+                @add-to-cart="updateCart"
+                @remove-from-cart="removeFromCart">
+            </product-display>    
+            
+        
+        </div>
+        <div>
+            <h1>It is a green boot</h1>
+        </div>
     </div>
-
     <!-- Import Js -->
+    <script src="./components/ProductDetails.js"></script>
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ReviewForm.js"></script>
+    <script src="./components/ReviewList.js"></script>
     <script src="./main.js"></script>
 </body>
 
